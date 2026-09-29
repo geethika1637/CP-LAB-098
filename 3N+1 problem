@@ -1,0 +1,35 @@
+#include <stdio.h>
+int length(int n)
+{
+int count=1;
+while(n!=1)
+{
+if(n%2==0)
+n=n/2;
+else
+n=3*n+1;
+count++;
+}
+return count;
+}
+int main()
+{
+int i,j;
+scanf("%d%d",&i,&j);
+int a=i,b=j;
+if(i>j)
+{
+int temp=i;
+i=j;
+j=temp;
+}
+int max=0;
+for(int k=i;k<=j;k++)
+{
+int len=length(k);
+if(len>max)
+max=len;
+}
+printf("%d %d %d",a,b,max);
+return 0;
+}
