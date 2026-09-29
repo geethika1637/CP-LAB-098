@@ -1,0 +1,9 @@
+#include <stdio.h>
+int main()
+{
+int N,K;
+scanf("%d %d",&N,&K);
+N=N^(1<<K);
+printf("%d\n",N);
+return 0;
+}
