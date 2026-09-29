@@ -1,0 +1,35 @@
+#include <stdio.h>
+int GCD(int A,int B)
+{
+    if(A==0)
+    return B;
+    if(B==0)
+    return A;
+    if(A%2==0 & B%2==0)
+    return GCD(A/2,B/2);
+    if(A%2==0)
+    return GCD(A/2,B);
+    if(B%2==0)
+    return GCD(A,B/2);
+    if(A>B)
+    return GCD((A-B)/2,B);
+    if(B>A)
+    return GCD(A,(B-A)/2);
+    return A;
+    }
+int main()
+{
+    int A,B,T;
+    scanf("%d%d%d",&A,&B,&T);
+    int n=GCD(A,B);
+    if(A>T || B>T)
+    {
+        if(T%n==0)
+        printf("YES\n");
+        else
+        printf("NO\n");
+     }
+     else
+     printf("NO\n");
+     return 0;
+}
