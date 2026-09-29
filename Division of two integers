@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <limits.h>
+int divide(int dividend,int divisor)
+{
+long result=(long)dividend/divisor;
+if(result>INT_MAX)
+return INT_MAX;
+if (result < INT_MIN)
+return INT_MIN;
+return(int)result;
+}
+int main()
+{
+int dividend, divisor;
+scanf("%d %d", &dividend, &divisor);
+printf("%d", divide(dividend, divisor));
+return 0;
+}
