@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+int main() 
+{
+char s[100001];
+int n,len,i,count;
+scanf("%s",s);
+n=strlen(s);
+for(len=n-1;len>0;len--) 
+{
+count=0;
+for(i=0;i<len;i++) 
+{
+if(s[i]==s[n-len+i])
+count++;
+}
+if(count==len) 
+{
+for(i=0;i<len;i++)
+printf("%c",s[i]);
+break;
+}
+}
+return 0;
+}
