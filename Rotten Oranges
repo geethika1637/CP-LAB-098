@@ -1,0 +1,67 @@
+#include<stdio.h>
+int main()
+{
+int n,m;
+scanf("%d%d",&n,&m);
+int grid[n][m];
+int dp[n][m];
+for(int i=0;i<n;i++)
+{
+for(int j=0;j<m;j++)
+{
+scanf("%d", &grid[i][j]);
+if(grid[i][j]==2)
+dp[i][j]=0;
+else if(grid[i][j]==1)
+dp[i][j]=9999;
+else
+dp[i][j]=-1;
+}
+}
+int changed=1;
+while(changed)
+{
+changed=0;
+for(int i=0;i<n;i++)
+{
+for(int j=0;j<m;j++)
+{
+if(grid[i][j]!=1)
+continue;
+int min=dp[i][j];
+if(i>0 && dp[i-1][j]!=-1 && dp[i-1][j]+1<min)
+                    min=dp[i-1][j]+1;
+if(i<n-1 && dp[i+1][j]!=-1 && dp[i+1][j]+1<min)
+                    min=dp[i+1][j]+1;
+if(j>0&&dp[i][j-1]!=-1 && dp[i][j-1]+1<min)
+                    min=dp[i][j-1]+1;
+if(j<m-1 && dp[i][j+1]!=-1 && dp[i][j+1]+1<min)
+                    min=dp[i][j+1]+1;
+if(min<dp[i][j])
+{
+dp[i][j]=min;
+changed=1;
+}
+}
+}
+}
+int answer=0;
+for(int i=0;i<n;i++)
+{
+for(int j=0;j<m;j++)
+{
+if(grid[i][j]==1)
+{
+if(dp[i][j]==9999)
+{
+printf("-1\n");
+return 0;
+}
+if(dp[i][j]>answer)
+answer=dp[i][j];
+}
+}
+}
+printf("%d\n",answer);
+return 0;
+}
