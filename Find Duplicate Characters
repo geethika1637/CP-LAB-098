@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main()
+{
+char s[100];
+int bits=0;
+int i,j,pos;
+int found=0;
+scanf("%s", s);
+for(i=0;s[i]!='\0';i++)
+{
+pos=s[i]-'a';
+for(j=i+1;s[j]!='\0';j++)
+{
+if(s[i]==s[j])
+{
+if(!(bits&(1<<pos)))
+{
+printf("%c ",s[i]);
+bits=bits|(1<<pos);
+found=1;
+}
+break;
+}
+}
+}
+if(!found)
+printf("No duplicates");
+return 0;
+}
